@@ -1,5 +1,5 @@
 CC=clang
-PROGRAMS = add addin
+PROGRAMS = add addin ptr-intro
 ALLPROGRAMS = $(PROGRAMS) $(TESTQSPROGRAMS)
 
 all: $(ALLPROGRAMS)
@@ -25,6 +25,9 @@ addin: addin.o hexdump.o
 
 addf.o: addf.c $(BUILDSTAMP)
 	$(CC) $(CPPFLAGS) $(CFLAGS) $(DEPCFLAGS) $(O) -fomit-frame-pointer -o $@ -c $<
+
+ptr-intro: ptr-intro.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $(O) -o $@ $^
 
 clean:
 	rm -rf $(ALLPROGRAMS) *.o $(DEPSDIR)
