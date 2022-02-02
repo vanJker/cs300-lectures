@@ -1,6 +1,6 @@
 CC=clang
-PROGRAMS = add addin ptr-intro
-ALLPROGRAMS = $(PROGRAMS) $(TESTQSPROGRAMS)
+PROGRAMS = add addin ptr-intro mexplore mexplore-with-dynamic mexplore-string
+ALLPROGRAMS = $(PROGRAMS)
 
 all: $(ALLPROGRAMS)
 
@@ -28,6 +28,9 @@ addf.o: addf.c $(BUILDSTAMP)
 
 ptr-intro: ptr-intro.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(O) -o $@ $^
+
+mexplore mexplore-with-dynamic mexplore-string: %: %.o hexdump.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -O0 -o $@ $^
 
 clean:
 	rm -rf $(ALLPROGRAMS) *.o $(DEPSDIR)
