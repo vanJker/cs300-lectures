@@ -4,13 +4,19 @@ void f() {
     int local = 1;
 
     printf("value of local: %d\n", local);
-    printf("address of local: %p\n", &local);
+    printf("address of local: %p\n", pointer);
 
-    int* ptr = &local;
+    int* pointer = &local;
 
-    printf("value of ptr: %p\n", ptr);
+    printf("address of pointer: %p\n", pointerpointer);
 
-    //printf("value of *ptr: %d\n", *ptr);
+    int** pointerpointer = &pointer;
+    printf("address of pointerpointer: %p\n", &pointerpointer);
+
+    printf("value of local through pointerpointer: %d\n",
+        **pointerpointer);
+    printf("address of local through pointerpointer: %d\n",
+        *pointerpointer);
 }
 
 int main() {
