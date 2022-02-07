@@ -15,7 +15,7 @@ void fhexdump_at(FILE* f, size_t first_offset, const void* ptr, size_t size) {
     const unsigned char* p = (const unsigned char*) ptr;
     for (size_t i = 0; i != size; ++i) {
         if (i % 16 == 0) {
-            fprintf(f, "%08zx", first_offset + i);
+            fprintf(f, "0x%08zx", first_offset + i);
         }
         fprintf(f, "%s%02x", (i % 8 == 0 ? "  " : " "), (unsigned) p[i]);
         if (i % 16 == 15 || i == size - 1) {

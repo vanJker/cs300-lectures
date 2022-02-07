@@ -5,8 +5,8 @@
 // hexdump(ptr, size)
 //    Print a hexdump of the `size` bytes of data starting at `ptr`
 //    to the standard output. The hexdump format is:
-//    XXXXXXXX  BB BB BB BB BB BB BB BB  BB BB BB BB BB BB BB BB  |CCCCCCCCCCCCCCCC|
-//    where XXXXXXXX is the address of the first byte in the line,
+//    0xXXXXXXXX  BB BB BB BB BB BB BB BB  BB BB BB BB BB BB BB BB  |CCCCCCCCCCCCCCCC|
+//    where 0xXXXXXXXX is the address of the first byte in the line,
 //    the BBs are hexadecimal values of those bytes, and the Cs show
 //    the printable ASCII characters corresponding to those bytes
 //    (`.` is displayed for non-printable characters).
