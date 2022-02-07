@@ -16,7 +16,7 @@ void f() {
     free(allocated_st2);
 
     //char* allocated_again_st = malloc(100);
-    //sprintf(allocated_st, "C programming is cool");
+    //sprintf(allocated_again_st, "C programming is cool");
     //hexdump(allocated_again_st, 100);
 }
 
