@@ -1,7 +1,13 @@
+*.opt
+*.noopt
 add
 addin
 ptr-intro
 mexplore
+mexplore-array
 mexplore-string
+mexplore-struct
 mexplore-with-dynamic
 mexplore-uninitialized
+l04-review1
+l04-review2
