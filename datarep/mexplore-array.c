@@ -25,8 +25,8 @@ void f() {
     //printf("%lu\n", sizeof(int));
     //printf("%lu\n", sizeof(char));
     //printf("%lu\n", sizeof(char*));
-    //printf("%lu\n", sizeof(arr));
-    //printf("%lu\n", sizeof((int*)arr));
+    //printf("%lu\n", sizeof(arr2));
+    //printf("%lu\n", sizeof((int*)arr2));
 }
 
 int main() {

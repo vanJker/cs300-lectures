@@ -2,7 +2,8 @@ CC=clang
 PROGRAMS = add addin ptr-intro mexplore.noopt mexplore.opt \
 					 mexplore-order.noopt mexplore-order.opt \
 					 mexplore-with-dynamic mexplore-string mexplore-struct \
-					 mexplore-uninitialized mexplore-array l04-review1 l04-review2
+					 mexplore-uninitialized mexplore-array mexplore-structalign \
+					 l04-review1 l04-review2 linked-list
 ALLPROGRAMS = $(PROGRAMS)
 
 all: $(ALLPROGRAMS)
@@ -32,7 +33,7 @@ addf.o: addf.c $(BUILDSTAMP)
 ptr-intro: ptr-intro.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(O) -o $@ $^
 
-mexplore-with-dynamic mexplore-string mexplore-uninitialized mexplore-array  mexplore-struct l04-review1 l04-review2: %: %.o hexdump.o
+mexplore-with-dynamic mexplore-string mexplore-uninitialized mexplore-array mexplore-struct mexplore-structalign l04-review1 l04-review2 linked-list: %: %.o hexdump.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -O0 -o $@ $^
 
 mexplore-order.noopt mexplore.noopt ubexplore.noopt: %.noopt: %.noopt.o hexdump.o

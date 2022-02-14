@@ -3,6 +3,7 @@
 #include <assert.h>
 #include <string.h>
 #include <stddef.h>
+#include <stdalign.h>
 #include "hexdump.h"
 
 void f() {
