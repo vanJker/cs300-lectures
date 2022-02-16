@@ -3,7 +3,8 @@ PROGRAMS = add addin ptr-intro mexplore.noopt mexplore.opt \
 					 mexplore-order.noopt mexplore-order.opt \
 					 mexplore-with-dynamic mexplore-string mexplore-struct \
 					 mexplore-uninitialized mexplore-array mexplore-structalign \
-					 l04-review1 l04-review2 linked-list
+					 l04-review1 l04-review2 linked-list signed-int \
+					 ubexplore.noopt ubexplore.opt ubexplore2.noopt ubexplore2.opt
 ALLPROGRAMS = $(PROGRAMS)
 
 all: $(ALLPROGRAMS)
@@ -33,15 +34,20 @@ addf.o: addf.c $(BUILDSTAMP)
 ptr-intro: ptr-intro.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(O) -o $@ $^
 
-mexplore-with-dynamic mexplore-string mexplore-uninitialized mexplore-array mexplore-struct mexplore-structalign l04-review1 l04-review2 linked-list: %: %.o hexdump.o
+mexplore-with-dynamic mexplore-string mexplore-uninitialized mexplore-array mexplore-struct mexplore-structalign l04-review1 l04-review2 linked-list signed-int: %: %.o hexdump.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -O0 -o $@ $^
 
-mexplore-order.noopt mexplore.noopt ubexplore.noopt: %.noopt: %.noopt.o hexdump.o
+mexplore-order.noopt mexplore.noopt: %.noopt: %.noopt.o hexdump.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -O0 -o $@ $^
 
-mexplore-order.opt mexplore.opt ubexplore.opt: %.opt: %.opt.o hexdump.o
+mexplore-order.opt mexplore.opt: %.opt: %.opt.o hexdump.o
 	$(CC) $(CFLAGS) $(LDFLAGS) -O3 -o $@ $^
 
+ubexplore.noopt ubexplore2.noopt: %.noopt: %.noopt.o hexdump.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -O0 -o $@ $^
+
+ubexplore.opt ubexplore2.opt: %.opt: %.opt.o hexdump.o
+	$(CC) $(CFLAGS) $(LDFLAGS) -O3 -o $@ $^
 
 clean:
 	rm -rf $(ALLPROGRAMS) *.o $(DEPSDIR)
