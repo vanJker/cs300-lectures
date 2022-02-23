@@ -1,4 +1,4 @@
-PROGRAMS = attackme attackme.unsafe call04f
+PROGRAMS = attackme attackme.unsafe
 #	$(sort $(patsubst %.c,%,$(wildcard call[0-9]f.c)))
 
 ASMS := $(patsubst %.c,%.s,$(sort $(wildcard asm[0-9][0-9].c)))
