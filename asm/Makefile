@@ -1,4 +1,4 @@
-PROGRAMS = attackme attackme.unsafe
+PROGRAMS = checksummer checksummer.unsafe
 #	$(sort $(patsubst %.c,%,$(wildcard call[0-9]f.c)))
 
 ASMS := $(patsubst %.c,%.s,$(sort $(wildcard asm[0-9][0-9].c)))
@@ -23,8 +23,11 @@ include ../common/rules.mk
 CXXFLAGS += -fcf-protection=none
 UNSAFEFLAGS := -U_FORTIFY_SOURCE -fno-stack-protector -no-pie -fcf-protection=none
 
-attackme.o: attackme.cc $(BUILDSTAMP)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(DEPCFLAGS) -O1 -o $@ -c $<
+checksummer.o: checksummer.cc $(BUILDSTAMP)
+	$(CXX) $(CPPFLAGS) -U_FORTIFY_SOURCE -no-pie $(CXXFLAGS) $(DEPCFLAGS) -O1 -o $@ -c $<
+
+checksummer.unsafe.o: checksummer.cc $(BUILDSTAMP)
+	$(CXX) $(CPPFLAGS) $(UNSAFEFLAGS) $(CXXFLAGS) $(DEPCFLAGS) -O1 -o $@ -c $<
 
 %.unsafe.o: %.cc $(BUILDSTAMP)
 	$(CXX) $(CPPFLAGS) $(UNSAFEFLAGS) $(CXXFLAGS) -O1 $(DEPCFLAGS) -o $@ -c $<
@@ -35,10 +38,10 @@ attackme.o: attackme.cc $(BUILDSTAMP)
 	  if test -z "$$ARGS"; then ARGS="$(DEFAULT_ASM_CXXFLAGS)"; fi; \
 	  $(call xrun,$(CXX) $$CXXFLAGS $$ARGS -o $@ -S $<,COMPILE -S $$ARGS $<) && { $(call cleanasm,$@); }
 
-attackme: attackme.o
+checksummer: checksummer.o
 	@$(call xrun,$(CXX) $(CXXFLAGS) $(O) $(LDFLAGS) -o $@ $^ $(LIBS),LINK $@)
 
-attackme.unsafe: attackme.unsafe.o
+checksummer.unsafe: checksummer.unsafe.o
 	@$(call xrun,$(CXX) $(CXXFLAGS) $(UNSAFEFLAGS) $(O) $(LDFLAGS) -o $@ $^ $(LIBS),LINK $@)
 
 %.o: %.cc $(BUILDSTAMP)
