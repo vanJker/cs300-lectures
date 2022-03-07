@@ -11,7 +11,7 @@ _Z1fPKii:
 	leaq	4(%rdi,%rdx,4), %rsi
 	movl	$0, %edx
 .L3:
-	movslq	(%rax), %rcx
+	movsbq	(%rax), %rcx
 	addq	%rcx, %rdx
 	addq	$4, %rax
 	cmpq	%rsi, %rax

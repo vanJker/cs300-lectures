@@ -21,7 +21,7 @@ O = 2
 include ../common/rules.mk
 
 CXXFLAGS += -fcf-protection=none
-UNSAFEFLAGS := -U_FORTIFY_SOURCE -fno-stack-protector -no-pie
+UNSAFEFLAGS := -U_FORTIFY_SOURCE -fno-stack-protector -no-pie -fcf-protection=none
 
 attackme.o: attackme.cc $(BUILDSTAMP)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(DEPCFLAGS) -O1 -o $@ -c $<
