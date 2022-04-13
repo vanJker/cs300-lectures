@@ -17,6 +17,6 @@ int main() {
     rbuf[n] = 0;
 
     assert(strcmp(wbuf, rbuf) == 0);
-    printf("Wrote %s", wbuf);
-    printf("Read %s", rbuf);
+    printf("Process %d wrote into pipe: %s", getpid(), wbuf);
+    printf("Process %d read from pipe: %s", getpid(), rbuf);
 }
